@@ -189,3 +189,99 @@ reader.readAsDataURL(file);
 </script>
 </body>
 </html>
+body, p, label, textarea {
+  color: #ffffff;
+}
+
+h1, h2 {
+  color: #ffb6cf;
+}
+
+textarea {
+  background: #071126;
+  border: 1px solid #ffb6cf;
+}color: white;<!DOCTYPE html>
+<html lang="ta">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>My Family ❤️</title>
+<style>
+body {
+  margin: 0;
+  padding: 25px 15px;
+  background: linear-gradient(135deg,#020817,#0b2149,#190b2b);
+  color: white;
+  font-family: Arial, sans-serif;
+  text-align: center;
+}
+h1,h2 { color: #ffb6cf; }
+.card {
+  max-width: 650px;
+  margin: 20px auto;
+  padding: 22px;
+  background: #0b1734;
+  border: 1px solid #70405c;
+  border-radius: 18px;
+}
+.photo {
+  width: 100%;
+  max-width: 280px;
+  border-radius: 14px;
+}
+a,button {
+  display: inline-block;
+  margin: 10px;
+  padding: 12px 18px;
+  background: #a83364;
+  color: white;
+  text-decoration: none;
+  border: 0;
+  border-radius: 10px;
+  font-size: 16px;
+}
+textarea {
+  width: 95%;
+  max-width: 500px;
+  min-height: 100px;
+  padding: 10px;
+  border-radius: 10px;
+}
+</style>
+</head>
+<body>
+
+<h1>🌹 My Family ❤️</h1>
+<p>என் குடும்பம் — என் மகிழ்ச்சி, என் பலம்.</p>
+<p>My family is my happiness and my strength.</p>
+
+<div class="card">
+  <h2>👨‍👩‍👧‍👦 Family Photos</h2>
+  <p>இங்கே நம் குடும்பப் புகைப்படங்களைச் சேர்ப்போம்.</p>
+  <p>📷 Family Photo 1</p>
+  <p>📷 Family Photo 2</p>
+</div>
+
+<div class="card">
+  <h2>❤️ My Family Members</h2>
+  <p>பெயர்: __________</p>
+  <p>உறவுமுறை: __________</p>
+  <p>பெயர்: __________</p>
+  <p>உறவுமுறை: __________</p>
+</div>
+
+<div class="card">
+  <h2>💌 A Message to My Family</h2>
+  <p>என் வாழ்க்கையில் நீங்கள் இருப்பது மிகப்பெரிய பரிசு. உங்கள் அன்பும் ஆதரவும் என்றும் எனக்குப் பலம்.</p>
+  <p>Your love and support mean everything to me.</p>
+</div>
+
+<div class="card">
+  <h2>🌹 Our Family Memories</h2>
+  <textarea placeholder="உங்கள் குடும்ப நினைவுகளை இங்கே எழுதுங்கள்..."></textarea>
+</div>
+
+<a href="index.html">← Back to My Love Story</a>
+
+</body>
+</html>
