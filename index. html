@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nishanthan Suseekaran | Personal Profile</title>
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #071525;
+      color: #ffffff;
+      line-height: 1.7;
+    }
+    header {
+      padding: 45px 20px;
+      text-align: center;
+      background: linear-gradient(135deg, #123c60, #071525);
+      border-bottom: 2px solid #d6ae61;
+    }
+    .avatar {
+      width: 125px;
+      height: 125px;
+      border: 3px solid #d6ae61;
+      border-radius: 50%;
+      margin: 0 auto 15px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 42px;
+      background: #1d3850;
+    }
+    h1 { color: #f2cf83; margin-bottom: 5px; }
+    header p { color: #d9e5ef; }
+    main { max-width: 850px; margin: auto; padding: 20px; }
+    section {
+      background: #10243a;
+      padding: 22px;
+      margin: 20px 0;
+      border-radius: 12px;
+      border: 1px solid #29445c;
+    }
+    h2 { color: #f2cf83; }
+    .tag {
+      display: inline-block;
+      background: #203c55;
+      padding: 6px 12px;
+      margin: 4px;
+      border-radius: 20px;
+    }
+    footer {
+      text-align: center;
+      padding: 25px;
+      color: #b9c9d8;
+    }
+    a { color: #f2cf83; }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="avatar">NS</div>
+  <h1>Nishanthan Suseekaran</h1>
+  <p>My Personal Profile | My Journey, My Dreams</p>
+  <span class="tag">Sri Lanka</span>
+  <span class="tag">Future Pilot</span>
+</header>
+
+<main>
+  <section>
+    <h2>About Me</h2>
+    <p>
+      Welcome to my personal website. My name is Nishanthan
+      Suseekaran. I am from Kaluwanchikudy, Batticaloa,
+      Sri Lanka. This website shares my education, work
+      experience, interests and future ambitions.
+    </p>
+  </section>
+
+  <section>
+    <h2>My Dream: Becoming a Pilot</h2>
+    <p>
+      Since childhood, I have dreamed of becoming a pilot.
+      Aviation inspires me, and I want to continue learning
+      about aircraft, flight controls, cockpit instruments
+      and aviation safety.
+    </p>
+    <p>
+      My goal is to keep learning and work towards my dream
+      step by step.
+    </p>
+  </section>
+
+  <section>
+    <h2>Basic Education – Primary School</h2>
+    <p><strong>School:</strong> Kannapuram Primary School</p>
+    <p><strong>Location:</strong> 35 Village, Kannapuram, Vaikala</p>
+    <p><strong>Years:</strong> 2003–2006</p>
+    <p>
+      My primary education helped me develop basic skills
+      in reading, writing, mathematics and general learning.
+      I also enjoyed sports and school activities.
+    </p>
+    <p>
+      I am grateful to my teachers for their guidance,
+      encouragement and support during my early education.
+    </p>
+  </section>
+
+  <section>
+    <h2>Work Experience</h2>
+    <p><strong>Company:</strong> Axona (as previously provided)</p>
+    <p><strong>Experience:</strong> 9 months in Qatar</p>
+    <p>
+      I value hard work, responsibility and learning new skills.
+    </p>
+  </section>
+
+  <section>
+    <h2>My Interests</h2>
+    <span class="tag">Aviation</span>
+    <span class="tag">Aircraft</span>
+    <span class="tag">Learning English</span>
+    <span class="tag">Technology</span>
+    <span class="tag">Sports</span>
+  </section>
+
+  <section>
+    <h2>My Future Goals</h2>
+    <p>
+      My goals are to improve my English, expand my aviation
+      knowledge and continue developing my skills for the future.
+    </p>
+  </section>
+</main>
+
+<footer>
+  <p>© 2026 Nishanthan Suseekaran</p>
+  <p>My journey continues...</p>
+</footer>
+
+</body>
+</html>
