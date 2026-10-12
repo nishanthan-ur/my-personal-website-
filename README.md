@@ -120,3 +120,72 @@ footer{
 
 </body>
 </html>
+<!DOCTYPE html>
+<html lang="ta">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>My Love Story ❤️</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;font-family:Georgia,serif;background:linear-gradient(150deg,#020817,#071c42,#160b2c);color:#fff0f5;text-align:center;min-height:100vh}
+header{padding:45px 18px 25px}
+.rose{font-size:48px}
+h1{font-size:clamp(32px,8vw,52px);color:#ffb6cf;margin:12px 0}
+.sub{color:#c9d8ff;font-size:17px}
+main{max-width:760px;margin:auto;padding:12px 18px 50px}
+.card{background:#0b1734dd;border:1px solid #713955;border-radius:20px;padding:24px;margin:18px 0;box-shadow:0 8px 30px #0005}
+h2{color:#ffc0d7}
+input,textarea{width:100%;padding:13px;margin:8px 0;background:#071126;color:white;border:1px solid #826080;border-radius:10px;font-size:16px}
+textarea{min-height:170px;resize:vertical}
+button{background:#9e315f;color:white;border:0;border-radius:10px;padding:12px 20px;margin:7px;cursor:pointer;font-size:16px}
+button:hover{background:#c44c7e}
+#preview{max-width:100%;max-height:350px;border-radius:15px;margin-top:15px;display:none}
+.story{white-space:pre-wrap;text-align:left;line-height:1.8}
+footer{padding:25px;color:#c9d8ff}
+</style>
+</head>
+<body>
+<header>
+<div class="rose">🌹 ❤️ 🌹</div>
+<h1>My Love Story</h1>
+<p class="sub">என் காதல் கதை · My heart, my story</p>
+<p>சில நினைவுகள் என்றும் அழியாது…<br>Some memories live forever in the heart.</p>
+</header>
+<main>
+<section class="card">
+<h2>💌 Our Love Story | நம் காதல் கதை</h2>
+<p>உன் மனதில் இருக்கும் கதையை இங்கே எழுது.</p>
+<p>Write your special memories here.</p>
+<textarea id="story" placeholder="தமிழில் அல்லது English-ல் உன் காதல் கதையை எழுது..."></textarea>
+<button onclick="saveStory()">கதையைச் சேமி | Save Story</button>
+<button onclick="showStory()">கதையைப் பார் | View Story</button>
+<div id="saved" class="story"></div>
+</section>
+<section class="card">
+<h2>📸 Our Special Memory</h2>
+<p>உனக்குப் பிடித்த புகைப்படத்தைத் தேர்ந்தெடு.</p>
+<input type="file" id="photo" accept="image/*">
+<img id="preview" alt="Selected memory">
+</section>
+<section class="card">
+<h2>❤️ A Message From My Heart</h2>
+<p>“உண்மையான அன்பு இதயத்தில் வாழும்.”</p>
+<p>“True love lives in the heart.”</p>
+</section>
+</main>
+<footer>Made with ❤️ · My Love Story 🌹</footer>
+<script>
+const story=document.getElementById('story');
+const saved=document.getElementById('saved');
+function saveStory(){saved.textContent=story.value;alert('இந்தப் பக்கத்தில் கதை காட்டப்பட்டுள்ளது. நிரந்தரமாகச் சேமிக்க, உங்கள் கதையை மீண்டும் இங்கே எழுதலாம்.');}
+function showStory(){saved.textContent=story.value;}
+document.getElementById('photo').addEventListener('change',function(){
+const file=this.files[0];if(!file)return;
+const reader=new FileReader();
+reader.onload=function(e){const img=document.getElementById('preview');img.src=e.target.result;img.style.display='inline-block';};
+reader.readAsDataURL(file);
+});
+</script>
+</body>
+</html>
