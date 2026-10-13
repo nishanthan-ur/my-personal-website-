@@ -1,531 +1,395 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Portfolio of Nishanthan Suseekaran, Electrician, HVAC Technician and aspiring pilot.">
+    <title>N Nishanthan Suseekaran | Portfolio</title>
 
-  <title>Nishanthana Suseekaran | Personal Website</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
 
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      scroll-behavior: smooth;
-    }
+        body {
+            font-family: Arial, sans-serif;
+            background: #f5f7fb;
+            color: #222;
+            line-height: 1.7;
+        }
 
-    body {
-      font-family: Arial, sans-serif;
-      color: #17324d;
-      background: #ffffff;
-    }
+        header {
+            background: #0a1f44;
+            padding: 18px 5%;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
 
-    /* ===== NAVBAR ===== */
-    header {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      background: #071c2d;
-      padding: 18px 7%;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      z-index: 1000;
-    }
+        nav {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 22px;
+        }
 
-    .logo {
-      color: white;
-      font-size: 22px;
-      font-weight: bold;
-    }
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 14px;
+        }
 
-    .logo span {
-      color: #1da1f2;
-    }
+        nav a:hover {
+            color: #61c5fa;
+        }
 
-    nav a {
-      color: white;
-      text-decoration: none;
-      margin-left: 25px;
-      font-size: 14px;
-      transition: 0.3s;
-    }
+        .hero {
+            min-height: 430px;
+            padding: 70px 8%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 45px;
+            color: white;
+            background:
+                linear-gradient(rgba(5, 20, 48, 0.82),
+                rgba(5, 20, 48, 0.82)),
+                url("airplane-bg.jpg") center/cover no-repeat;
+        }
 
-    nav a:hover {
-      color: #1da1f2;
-    }
+        .profile-photo {
+            width: 190px;
+            height: 190px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 5px solid white;
+        }
 
-    /* ===== HERO ===== */
-    .hero {
-      min-height: 100vh;
-      padding: 120px 7% 60px;
-      display: flex;
-      align-items: center;
-      background:
-        linear-gradient(90deg, #061827 35%, rgba(6,24,39,0.65)),
-        url("your-background-image.jpg") center/cover no-repeat;
-      color: white;
-    }
+        .hero h1 {
+            font-size: 38px;
+            margin-bottom: 12px;
+        }
 
-    .hero-content {
-      max-width: 650px;
-    }
+        .hero p {
+            font-size: 18px;
+            color: #d7e9ff;
+        }
 
-    .hero h4 {
-      color: #20a4f3;
-      font-size: 24px;
-      margin-bottom: 10px;
-    }
+        .hero .tagline {
+            margin-top: 8px;
+            font-size: 16px;
+        }
 
-    .hero h1 {
-      font-size: 50px;
-      line-height: 1.15;
-      margin-bottom: 12px;
-    }
+        .container {
+            width: 90%;
+            max-width: 1050px;
+            margin: auto;
+        }
 
-    .hero h1 span {
-      color: #168fe0;
-    }
+        .section {
+            background: white;
+            margin: 30px 0;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 3px 14px rgba(0, 0, 0, 0.07);
+        }
 
-    .hero h3 {
-      font-size: 21px;
-      margin-bottom: 20px;
-    }
+        .section h2 {
+            color: #0a1f44;
+            font-size: 27px;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 3px solid #61c5fa;
+        }
 
-    .hero p {
-      font-size: 17px;
-      line-height: 1.7;
-      max-width: 600px;
-      margin-bottom: 25px;
-    }
+        .item {
+            padding: 15px 0;
+            border-bottom: 1px solid #e5e9f0;
+        }
 
-    .socials a {
-      display: inline-flex;
-      width: 42px;
-      height: 42px;
-      margin-right: 10px;
-      border: 1px solid #fff;
-      border-radius: 50%;
-      align-items: center;
-      justify-content: center;
-      color: white;
-      text-decoration: none;
-    }
+        .item:last-child {
+            border-bottom: none;
+        }
 
-    .socials a:hover {
-      background: #168fe0;
-      border-color: #168fe0;
-    }
+        .item h3 {
+            color: #173d70;
+            margin-bottom: 5px;
+        }
 
-    .cv-btn {
-      display: inline-block;
-      margin-top: 25px;
-      padding: 13px 25px;
-      background: #1699ed;
-      color: white;
-      text-decoration: none;
-      border-radius: 25px;
-      font-weight: bold;
-    }
+        .date {
+            color: #63748a;
+            font-size: 14px;
+        }
 
-    /* ===== COMMON SECTION ===== */
-    section {
-      padding: 80px 7%;
-    }
+        .skills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
 
-    .section-title {
-      font-size: 32px;
-      margin-bottom: 35px;
-      position: relative;
-    }
+        .skill {
+            background: #e5f3ff;
+            color: #0a1f44;
+            padding: 10px 17px;
+            border-radius: 7px;
+            font-weight: bold;
+        }
 
-    .section-title::after {
-      content: "";
-      display: block;
-      width: 55px;
-      height: 4px;
-      background: #159be9;
-      margin-top: 8px;
-    }
+        .contact-links a {
+            color: #125c9e;
+            text-decoration: none;
+            overflow-wrap: anywhere;
+        }
 
-    /* ===== ABOUT ===== */
-    .about {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 50px;
-      align-items: start;
-    }
+        .contact-links a:hover {
+            text-decoration: underline;
+        }
 
-    .about-text p {
-      line-height: 1.8;
-      margin-bottom: 18px;
-      color: #46596b;
-    }
+        .contact-row {
+            margin: 12px 0;
+            overflow-wrap: anywhere;
+        }
 
-    .info-box {
-      border-left: 1px solid #ddd;
-      padding-left: 35px;
-    }
+        .button {
+            display: inline-block;
+            margin-top: 22px;
+            padding: 12px 22px;
+            background: #61c5fa;
+            color: #0a1f44;
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 6px;
+        }
 
-    .info-row {
-      display: flex;
-      justify-content: space-between;
-      padding: 17px 0;
-      border-bottom: 1px solid #eee;
-    }
+        .button:hover {
+            background: white;
+        }
 
-    .info-row strong {
-      color: #17324d;
-    }
+        footer {
+            background: #0a1f44;
+            color: white;
+            text-align: center;
+            padding: 24px 15px;
+            margin-top: 35px;
+        }
 
-    /* ===== EDUCATION & WORK ===== */
-    .gray-section {
-      background: #f3f7fb;
-    }
+        @media (max-width: 650px) {
+            nav {
+                gap: 12px;
+            }
 
-    .two-columns {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 45px;
-    }
+            nav a {
+                font-size: 12px;
+            }
 
-    .card {
-      background: white;
-      padding: 25px;
-      margin-bottom: 15px;
-      border-radius: 8px;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.06);
-    }
+            .hero {
+                flex-direction: column;
+                text-align: center;
+                padding: 45px 5%;
+            }
 
-    .card h3 {
-      margin-bottom: 8px;
-    }
+            .hero h1 {
+                font-size: 29px;
+            }
 
-    .card p {
-      color: #718090;
-    }
+            .profile-photo {
+                width: 155px;
+                height: 155px;
+            }
 
-    /* ===== SKILLS ===== */
-    .skills {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 15px;
-    }
-
-    .skill {
-      background: #f1f7fc;
-      padding: 13px 22px;
-      border-radius: 25px;
-      color: #17324d;
-    }
-
-    /* ===== CONTACT ===== */
-    .contact {
-      background: #071c2d;
-      color: white;
-    }
-
-    .contact .section-title {
-      color: white;
-    }
-
-    .contact-info {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 25px;
-    }
-
-    .contact-box {
-      padding: 20px;
-    }
-
-    .contact-box h3 {
-      margin-bottom: 10px;
-    }
-
-    .contact-box p {
-      color: #c8d5df;
-    }
-
-    /* ===== FOOTER ===== */
-    footer {
-      background: #041421;
-      color: white;
-      padding: 20px 7%;
-      display: flex;
-      justify-content: space-between;
-      font-size: 13px;
-    }
-
-    /* ===== MOBILE ===== */
-    @media (max-width: 768px) {
-
-      header {
-        flex-direction: column;
-        gap: 15px;
-      }
-
-      nav {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
-      }
-
-      nav a {
-        margin: 5px 8px;
-      }
-
-      .hero h1 {
-        font-size: 38px;
-      }
-
-      .about,
-      .two-columns,
-      .contact-info {
-        grid-template-columns: 1fr;
-      }
-
-      .info-box {
-        border-left: none;
-        padding-left: 0;
-      }
-
-      footer {
-        flex-direction: column;
-        gap: 10px;
-        text-align: center;
-      }
-    }
-  </style>
+            .section {
+                padding: 22px;
+            }
+        }
+    </style>
 </head>
 
 <body>
 
-  <!-- ===== NAVIGATION ===== -->
-  <header>
-    <div class="logo">
-      Nishanthana <span>Suseekaran</span>
-    </div>
+    <!-- Navigation -->
+    <header>
+        <nav>
+            <a href="#home">Home</a>
+            <a href="#about">About</a>
+            <a href="#education">Education</a>
+            <a href="#experience">Work Experience</a>
+            <a href="#qualifications">Qualifications</a>
+            <a href="#skills">Skills</a>
+            <a href="#contact">Contact</a>
+        </nav>
+    </header>
 
-    <nav>
-      <a href="#home">Home</a>
-      <a href="#about">About</a>
-      <a href="#education">Education</a>
-      <a href="#work">Work Experience</a>
-      <a href="#skills">Skills</a>
-      <a href="#contact">Contact</a>
-    </nav>
-  </header>
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <img
+            class="profile-photo"
+            src="profile.jpg"
+            alt="Nishanthan Suseekaran profile photo"
+        >
 
-
-  <!-- ===== HOME ===== -->
-  <section class="hero" id="home">
-
-    <div class="hero-content">
-
-      <h4>Hello, I'm</h4>
-
-      <h1>
-        Nishanthana <span>Suseekaran</span>
-      </h1>
-
-      <h3>
-        Aspiring Pilot | Lifelong Learner | Dreamer
-      </h3>
-
-      <p>
-        "Driven by dreams, guided by discipline,
-        working towards a career in aviation."
-      </p>
-
-      <div class="socials">
-        <a href="#">in</a>
-        <a href="#">f</a>
-        <a href="#">ig</a>
-        <a href="#">✉</a>
-      </div>
-
-      <a href="#" class="cv-btn">
-        ↓ Download CV
-      </a>
-
-    </div>
-
-  </section>
-
-
-  <!-- ===== ABOUT ===== -->
-  <section id="about">
-
-    <div class="about">
-
-      <div class="about-text">
-
-        <h2 class="section-title">
-          About Me
-        </h2>
-
-        <p>
-          I am Nishanthana Suseekaran, a passionate
-          individual with a strong ambition to build
-          a successful career in aviation.
-        </p>
-
-        <p>
-          I believe in continuous learning,
-          self-improvement and working hard
-          towards my dreams.
-        </p>
-
-      </div>
-
-      <div class="info-box">
-
-        <div class="info-row">
-          <strong>Name</strong>
-          <span>Nishanthana Suseekaran</span>
+        <div>
+            <h1>N Nishanthan Suseekaran</h1>
+            <p>Aspiring Pilot | Lifelong Learner | Dreamer</p>
+            <p class="tagline">
+                Electrician &amp; HVAC Technician with a passion for aviation.
+            </p>
+            <a class="button" href="#contact">Contact Me</a>
         </div>
+    </section>
 
-        <div class="info-row">
-          <strong>Age</strong>
-          <span>--</span>
-        </div>
+    <main class="container">
 
-        <div class="info-row">
-          <strong>Nationality</strong>
-          <span>--</span>
-        </div>
+        <!-- About Me -->
+        <section class="section" id="about">
+            <h2>About Me</h2>
+            <p>
+                Hello, I'm Nishanthan Suseekaran from Sri Lanka.
+                I have experience in electrical work and HVAC systems,
+                along with a strong interest in aviation and professional
+                development. I am passionate about learning new skills,
+                improving my technical knowledge and pursuing my goals.
+            </p>
 
-        <div class="info-row">
-          <strong>Location</strong>
-          <span>--</span>
-        </div>
+            <div class="item">
+                <strong>Age:</strong> 25
+            </div>
 
-        <div class="info-row">
-          <strong>Dream</strong>
-          <span>Commercial Pilot</span>
-        </div>
+            <div class="item">
+                <strong>Nationality:</strong> Sri Lankan
+            </div>
 
-      </div>
+            <div class="item">
+                <strong>Location:</strong>
+                63/35, Village Kaluwanchikudi, Batticaloa, Sri Lanka
+            </div>
+        </section>
 
-    </div>
+        <!-- Education -->
+        <section class="section" id="education">
+            <h2>Education</h2>
 
-  </section>
+            <div class="item">
+                <h3>Electrical Trade</h3>
+                <p>Technical and practical electrical training.</p>
+            </div>
 
+            <div class="item">
+                <h3>HVAC and Technical Experience</h3>
+                <p>
+                    Practical experience in HVAC systems and technical
+                    maintenance.
+                </p>
+            </div>
+        </section>
 
-  <!-- ===== EDUCATION & WORK ===== -->
-  <section class="gray-section" id="education">
+        <!-- Work Experience -->
+        <section class="section" id="experience">
+            <h2>Work Experience</h2>
 
-    <div class="two-columns">
+            <div class="item">
+                <h3>HVAC Technician — Acciona</h3>
+                <p class="date">
+                    February 2023 – May 2026
+                </p>
+                <p>
+                    Experience in HVAC systems, maintenance and technical
+                    work. Responsibilities may include inspection,
+                    troubleshooting and equipment servicing.
+                </p>
+            </div>
 
-      <div>
+            <div class="item">
+                <h3>Electrician Field — Maximo</h3>
+                <p class="date">
+                    January 2022 – June 2022
+                </p>
+                <p>
+                    Electrical field experience involving technical tasks,
+                    electrical maintenance and related work.
+                </p>
+            </div>
+        </section>
 
-        <h2 class="section-title">
-          Education
-        </h2>
+        <!-- Qualifications -->
+        <section class="section" id="qualifications">
+            <h2>Qualifications</h2>
 
-        <div class="card">
-          <h3>Higher Education</h3>
-          <p>Details will be added soon.</p>
-        </div>
+            <div class="item">
+                <h3>NVQ Level 3 — Electrician</h3>
+                <p>Electrical trade qualification.</p>
+            </div>
 
-        <div class="card">
-          <h3>School Education</h3>
-          <p>Details will be added soon.</p>
-        </div>
+            <div class="item">
+                <h3>NVQ Level 4 — Electrician</h3>
+                <p>Electrical technical qualification.</p>
+            </div>
 
-        <div class="card">
-          <h3>Aviation Training</h3>
-          <p>Details will be added soon.</p>
-        </div>
+            <div class="item">
+                <h3>Certificate of Trade Test</h3>
+                <p>Trade test certificate.</p>
+            </div>
 
-      </div>
+            <div class="item">
+                <h3>Commercial Pilot Training</h3>
+                <p>
+                    Interested in aviation, aircraft operations, flight
+                    safety and the knowledge required for a professional
+                    aviation career.
+                </p>
+                <p class="date">
+                    Training or licence status to be confirmed.
+                </p>
+            </div>
+        </section>
 
+        <!-- Skills -->
+        <section class="section" id="skills">
+            <h2>Skills</h2>
 
-      <div id="work">
+            <div class="skills">
+                <span class="skill">Electrical Work</span>
+                <span class="skill">HVAC Systems</span>
+                <span class="skill">Technical Maintenance</span>
+                <span class="skill">Troubleshooting</span>
+                <span class="skill">Technical Engineering</span>
+                <span class="skill">Aviation Interest</span>
+            </div>
+        </section>
 
-        <h2 class="section-title">
-          Work Experience
-        </h2>
+        <!-- Contact -->
+        <section class="section" id="contact">
+            <h2>Get In Touch</h2>
 
-        <div class="card">
-          <h3>Work Experience</h3>
-          <p>
-            Your work experience details
-            will be added here.
-          </p>
-        </div>
+            <div class="contact-links">
+                <p class="contact-row">
+                    <strong>Email:</strong>
+                    <a href="mailto:nishanthan200102@gmail.com">
+                        nishanthan200102@gmail.com
+                    </a>
+                </p>
 
-      </div>
+                <p class="contact-row">
+                    <strong>WhatsApp:</strong>
+                    <a
+                        href="https://wa.me/94756652873"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
+                        +94 756 652 873
+                    </a>
+                </p>
 
-    </div>
+                <p class="contact-row">
+                    <strong>Location:</strong>
+                    63/35, Village Kaluwanchikudi,
+                    Batticaloa, Sri Lanka
+                </p>
+            </div>
 
-  </section>
-
-
-  <!-- ===== SKILLS ===== -->
-  <section id="skills">
-
-    <h2 class="section-title">
-      Skills
-    </h2>
-
-    <div class="skills">
-
-      <div class="skill">Communication</div>
-      <div class="skill">Problem Solving</div>
-      <div class="skill">Teamwork</div>
-      <div class="skill">Time Management</div>
-      <div class="skill">Adaptability</div>
-      <div class="skill">Computer Skills</div>
-
-    </div>
-
-  </section>
-
-
-  <!-- ===== CONTACT ===== -->
-  <section class="contact" id="contact">
-
-    <h2 class="section-title">
-      Get In Touch
-    </h2>
-
-    <div class="contact-info">
-
-      <div class="contact-box">
-        <h3>Email</h3>
-        <p>Your email will be added here.</p>
-      </div>
-
-      <div class="contact-box">
-        <h3>Location</h3>
-        <p>Your location will be added here.</p>
-      </div>
-
-      <div class="contact-box">
-        <h3>LinkedIn</h3>
-        <p>Your LinkedIn profile will be added here.</p>
-      </div>
-
-    </div>
-
-  </section>
-
-
-  <!-- ===== FOOTER ===== -->
-  <footer>
-
-    <p>
-      © 2026 Nishanthana Suseekaran. All rights reserved.
-    </p>
-
-    <p>
-      Big dreams | Hard work | Better tomorrow
-    </p>
-
-  </footer>
-
-</body>
-</html>
+            <a
+                class="button"
