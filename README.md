@@ -198,7 +198,7 @@
       onerror="this.style.display='none'; document.getElementById('photo-note').style.display='block';">
 
     <p id="photo-note" style="display:none;">
-      Profile photo will appear here after you upload IMG-20261016-WA0008.jpg.
+      Profile photo will appear here after you uploadIMG-20261016-WA0008.jpg
     </p>
 
     <p>
