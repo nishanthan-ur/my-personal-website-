@@ -281,12 +281,12 @@
 
     <img
       class="plane-photo"
-      src="airplane.jpg"
+      src="IMG-20261016-WA0008.jpg"
       alt="Airplane representing my dream of becoming a pilot"
       onerror="this.style.display='none'; document.getElementById('plane-note').style.display='block';">
 
     <p id="plane-note" style="display:none;">
-      Airplane photo will appear here after you upload airplane.jpg.
+      Airplane photo will appear here after you upload IMG-20261016-WA0008.jpg
     </p>
 
     <div class="dream">
