@@ -179,7 +179,6 @@
     <a href="#about">About Me</a>
     <a href="#education">Education</a>
     <a href="#work">Work</a>
-    <a href="#gallery">gallery</a>
     <a href="#dream">My Dream</a>
     <a href="#location">Location</a>
     <a href="#contact">Contact</a>
