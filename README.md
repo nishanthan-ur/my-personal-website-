@@ -181,7 +181,7 @@
 <body>
 
   <header>
-    <div class="logo">Nishanthan</div>
+    <div class="logo">Nishanthan Suseekaran</div>
 
     <nav>
       <a href="#home">Home</a>
@@ -201,7 +201,6 @@
       onerror="this.style.display='none'"
     >
 
-    <h1>Nishanthan Suseekaran</h1>
 
     <p>Welcome to My Personal Website</p>
 
