@@ -189,7 +189,7 @@
 
     <!-- PROFILE PHOTO:
          Upload your photo to the same GitHub folder
-         and name it profile.jpg -->
+         and name it IMG-20261016-WA0009.jpg-->
 
     <img
       class="profile-photo"
