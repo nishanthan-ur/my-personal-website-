@@ -198,7 +198,7 @@
       onerror="this.style.display='none'; document.getElementById('photo-note').style.display='block';">
 
     <p id="photo-note" style="display:none;">
-      Profile photo will appear here after you upload profile .jpg
+      Profile photo will appear here after you upload IMG-20261016-WA0008.jpg
     </p>
 
     <p>
@@ -277,16 +277,16 @@
 
     <!-- AIRPLANE PHOTO:
          Upload an airplane photo into the same folder
-         and name it airplane.jpg -->
+         and name itIMG-20261016-WA0008.jpg-->
 
     <img
       class="plane-photo"
-      src="IMG-20261016-WA0008.jpg"
+      src="🥰🥰.jpg"
       alt="Airplane representing my dream of becoming a pilot"
       onerror="this.style.display='none'; document.getElementById('plane-note').style.display='block';">
 
     <p id="plane-note" style="display:none;">
-      Airplane photo will appear here after you upload IMG-20261016-WA0008.jpg
+      Airplane photo will appear here after you upload IMG-😂😂jpg
     </p>
 
     <div class="dream">
