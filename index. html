@@ -1,0 +1,204 @@
+
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nishanthan Suseekaran | My Website</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background: #f4f7fb;
+      color: #222;
+      line-height: 1.7;
+    }
+
+    header {
+      background: #071b36;
+      color: white;
+      padding: 25px 15px;
+      text-align: center;
+    }
+
+    header h1 {
+      color: #62b6ff;
+      font-size: 28px;
+    }
+
+    nav {
+      background: #12345a;
+      padding: 12px;
+      text-align: center;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      display: inline-block;
+      padding: 7px 10px;
+    }
+
+    nav a:hover {
+      color: #62b6ff;
+    }
+
+    section {
+      background: white;
+      max-width: 900px;
+      margin: 22px auto;
+      padding: 25px;
+      border-radius: 12px;
+      box-shadow: 0 3px 12px #00000010;
+    }
+
+    h2 {
+      color: #123d70;
+      margin-bottom: 12px;
+      border-bottom: 2px solid #62b6ff;
+      padding-bottom: 7px;
+    }
+
+    .info {
+      margin: 8px 0;
+    }
+
+    .dream {
+      background: #eaf4ff;
+      border-left: 5px solid #2586d8;
+      padding: 15px;
+      margin-top: 15px;
+    }
+
+    footer {
+      background: #071b36;
+      color: white;
+      text-align: center;
+      padding: 22px 10px;
+      margin-top: 30px;
+    }
+
+    @media (max-width: 600px) {
+      header h1 {
+        font-size: 23px;
+      }
+
+      section {
+        margin: 15px 10px;
+        padding: 18px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <h1>Nishanthan Suseekaran</h1>
+    <p>My Life | My Education | My Dream</p>
+  </header>
+
+  <nav>
+    <a href="#home">Home</a>
+    <a href="#about">About Me</a>
+    <a href="#education">Education</a>
+    <a href="#work">Work</a>
+    <a href="#dream">My Dream</a>
+    <a href="#contact">Contact</a>
+  </nav>
+
+  <section id="home">
+    <h2>Welcome to My Website</h2>
+    <p>
+      Welcome to my personal website.
+      This website shares my life, education,
+      work experience and future dreams.
+    </p>
+  </section>
+
+  <section id="about">
+    <h2>About Me</h2>
+    <p class="info"><strong>Name:</strong> Nishanthan Suseekaran</p>
+    <p class="info"><strong>Age:</strong> 25</p>
+    <p class="info">
+      <strong>Location:</strong>
+      Kaluwanchikudy, Batticaloa, Sri Lanka
+    </p>
+    <p>
+      I am from Sri Lanka. I believe in learning,
+      working hard and moving forward in life.
+    </p>
+  </section>
+
+  <section id="education">
+    <h2>My Education</h2>
+
+    <h3>Primary Education</h3>
+    <p>Kannapuram Primary School</p>
+    <p>Years: 2003–2006</p>
+
+    <br>
+
+    <h3>General Education</h3>
+    <p>Kannagipuram Vinayahar Vidiyalayam, Mahiloor</p>
+    <p>Years: 2006–2014</p>
+    <p>
+      Subjects: Tamil, Mathematics, English, Science,
+      History, Art, Geography and Drama.
+    </p>
+
+    <br>
+
+    <h3>Higher Education</h3>
+    <p>BT/PD/Paddiruppu Madya Maha Vidyalayam, Kaluwanchikudy</p>
+    <p>Years: 2019–2020</p>
+    <p>
+      Smart Class Subjects: Electrical, Textile,
+      Graphic Design and ICT.
+    </p>
+  </section>
+
+  <section id="work">
+    <h2>My Work Experience</h2>
+    <p><strong>Company:</strong> Akshona</p>
+    <p><strong>Work:</strong> Tailor Driver</p>
+    <p><strong>Country:</strong> Qatar</p>
+    <p><strong>Experience:</strong> 9 Months</p>
+  </section>
+
+  <section id="dream">
+    <h2>My Biggest Dream</h2>
+    <div class="dream">
+      <h3>My Dream Is to Become a Pilot</h3>
+      <p>
+        Since childhood, I have dreamed of becoming
+        a pilot. Although I have faced challenges
+        and limited opportunities, my dream is still alive.
+        I will continue learning and working towards my future.
+      </p>
+      <p><strong>Keep Going — My Dream Is Still Alive!</strong></p>
+    </div>
+  </section>
+
+  <section id="contact">
+    <h2>Contact</h2>
+    <p>Welcome to my personal website.</p>
+    <p>Location: Sri Lanka</p>
+    <p>
+      My family, personal photos and other website
+      sections can be added later.
+    </p>
+  </section>
+
+  <footer>
+    <p>© 2026 Nishanthan Suseekaran</p>
+    <p>Learn • Work • Dream • Achieve</p>
+  </footer>
+
+</body>
+</html>
