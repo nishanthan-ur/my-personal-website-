@@ -222,9 +222,7 @@
       <h2>About Me</h2>
 
       <p>
-        Hello! My name is Nishanthan Suseekaran.
-        I am from Kaluwanchikudy, Batticaloa,
-        Sri Lanka.
+        Hello! I'm Nishanthan Suseekaran. I'm 25 years old and from Sri Lanka. My biggest dream since childhood is to become a pilot. Although I faced many challenges and lacked the proper opportunities, facilities and resources to study aviation, my dream is still alive. I am now working hard, learning step by step, and building my future. This website is a small step towards my big dream and a way to share my journey, life and achievements.
       </p>
 
       <p>
