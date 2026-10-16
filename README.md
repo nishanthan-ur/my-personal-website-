@@ -138,7 +138,7 @@
 
     footer {
       background: #071b36;
-      color: maroon;
+      color: white;
       text-align: center;
       padding: 22px 10px;
       margin-top: 30px;
