@@ -68,7 +68,7 @@
       border-radius: 50%;
       border: 4px solid white;
       background: #dceeff;
-      color: #071b35;
+      color: #45113b;
       display: inline-flex;
       justify-content: center;
       align-items: center;
