@@ -134,7 +134,7 @@
     }
 
     .card {
-      border-left: 4px solid #1683bd;
+      border-left: 4px solid #7a28b8;
       padding: 12px 16px;
       margin-top: 15px;
       background: #f5f9fd;
