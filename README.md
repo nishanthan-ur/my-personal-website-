@@ -196,7 +196,7 @@
   <div class="hero" id="home">
     <img
       class="profile"
-      src="❤️"
+      src="IMG-20261016-WA0009.jpg"
       alt="Nishanthan Suseekaran"
       onerror="this.style.display='none'"
     >
