@@ -62,7 +62,7 @@
     }
 
     section {
-      background: white;
+      background: whiteg 
       max-width: 900px;
       margin: 22px auto;
       padding: 25px;
@@ -138,7 +138,7 @@
 
     footer {
       background: #071b36;
-      color: white;
+      color: maroon;
       text-align: center;
       padding: 22px 10px;
       margin-top: 30px;
@@ -179,6 +179,7 @@
     <a href="#about">About Me</a>
     <a href="#education">Education</a>
     <a href="#work">Work</a>
+    <a href="#gallery">gallery</a>
     <a href="#dream">My Dream</a>
     <a href="#location">Location</a>
     <a href="#contact">Contact</a>
