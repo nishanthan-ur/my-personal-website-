@@ -536,7 +536,6 @@ footer{text-align:center;background:#051329;color:white;padding:30px 15px;margin
     cursor: pointer;
   }
 </style>
-
    
   </div>
 </section>
@@ -562,11 +561,36 @@ footer{text-align:center;background:#051329;color:white;padding:30px 15px;margin
   </div>
 </section>
 
-<section id="family">
-  <h2>My Family</h2>
-  <p>My family is an important part of my life. This page is dedicated to family love, photographs and special memories.</p>
-  <a class="family-link" href="my-family.html">Visit My Family Page →</a>
+<!-- Gallery Section HTML -->
+<section id="gallery" class="gallery-section" itemscope itemtype="https://schema.org/ImageGallery">
+  <div class="gallery-container">
+    <h2>Nishanthan's Gallery</h2>
+    <p class="gallery-subtitle">A dedicated space featuring special memories and family portraits.</p>
+
+    <!-- My Father Section -->
+    <div class="parent-category">
+      <h3>My Father</h3>
+      <div class="photo-grid">
+        <div class="photo-card" itemprop="associatedMedia" itemscope itemtype="https://schema.org/Photograph">
+          <img src="father-photo1.jpg" alt="Nishanthan Father Portrait" title="Nishanthan Father" itemprop="contentUrl">
+          <span itemprop="caption">Father</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- My Mother Section -->
+    <div class="parent-category">
+      <h3>My Mother</h3>
+      <div class="photo-grid">
+        <div class="photo-card" itemprop="associatedMedia" itemscope itemtype="https://schema.org/Photograph">
+          <img src="mother-photo1.jpg" alt="Nishanthan Mother Portrait" title="Nishanthan Mother" itemprop="contentUrl">
+          <span itemprop="caption">Mother</span>
+        </div>
+      </div>
+    </div>
+  </div>
 </section>
+
 
 </main>
 
