@@ -1,44 +1,163 @@
+<section id="company-friends" class="friends-section">
+  <h2>My Company Friends</h2>
+  
+  <div class="friends-card">
+    <p class="friends-desc">
+      There is a lot to say about my friends at the company. They are very friendly, behave in a wonderful manner, and always maintain a positive atmosphere. I received a lot of support and cooperation from them throughout my work journey.
+    </p>
 
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Axona Experience - Details</title>
-    <style>
-        body { background-color: #0b0f19; color: #ffffff; font-family: Arial, sans-serif; margin: 0; padding: 20px; }
-        .container { max-width: 1000px; margin: auto; }
-        a.back-btn { color: #00bcd4; text-decoration: none; font-size: 16px; display: inline-block; margin-bottom: 20px; }
-        h1 { color: #ff4d4d; border-bottom: 2px solid #ff4d4d; padding-bottom: 10px; }
-        .photo-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 20px; margin-top: 25px; }
-        .photo-card { background-color: #161b22; border: 1px solid #30363d; border-radius: 8px; padding: 10px; text-align: center; }
-        .photo-card img { width: 100px; height: 130px; object-fit: cover; border-radius: 4px; border: 1px solid #ffffff; margin-bottom: 8px; }
-        .photo-card p { font-size: 13px; color: #c9d1d9; margin: 5px 0 0 0; line-height: 1.4; }
-    </style>
-</head>
-<body>
-  <div class="container">
-    <a href="index.html" class="back-btn">&larr; Back to Portfolio</a>
-    <h1>Axona Company - Work Journey & Memories</h1>
-    <p><strong>Role:</strong> HVAC Technician (9 Months in Qatar)</p>
-    <p>Explore the complete collection of 15 captured moments and short stories from my operational field experience at Axona:</p>
+    <!-- Friends Photos Container (Only shows if images are added) -->
+    <div class="friends-photos-container">
+      
+      <!-- Friend Photo 1 -->
+      <div class="photo-card">
+        <img src="friend-1.jpg" alt="Friend Photo 1" class="passport-img" onerror="this.closest('.photo-card').style.display='none'" onclick="openModal(this.src)">
+        <p class="photo-caption">Good Support</p>
+      </div>
 
-    <div class="photo-grid">
-      <div class="photo-card"><img src="axona-1.jpg" alt="1"><p>First day on site, setting up essential safety equipment.</p></div>
-      <div class="photo-card"><img src="axona-2.jpg" alt="2"><p>Team coordination meeting before starting HVAC installation.</p></div>
-      <div class="photo-card"><img src="axona-3.jpg" alt="3"><p>Successfully completed heavy ducting work in the main hall.</p></div>
-      <div class="photo-card"><img src="axona-4.jpg" alt="4"><p>Conducting routine maintenance checks on large cooling units.</p></div>
-      <div class="photo-card"><img src="axona-5.jpg" alt="5"><p>Troubleshooting complex electrical faults in the control panel.</p></div>
-      <div class="photo-card"><img src="axona-6.jpg" alt="6"><p>Collaborating with fellow technicians on strict deadlines.</p></div>
-      <div class="photo-card"><img src="axona-7.jpg" alt="7"><p>Testing system pressure accurately after pipeline welding.</p></div>
-      <div class="photo-card"><img src="axona-8.jpg" alt="8"><p>Taking a brief tactical break during an intense shift.</p></div>
-      <div class="photo-card"><img src="axona-9.jpg" alt="9"><p>Inspecting ventilation fans to ensure smooth air flow.</p></div>
-      <div class="photo-card"><img src="axona-10.jpg" alt="10"><p>Prioritizing safety protocol before performing height work.</p></div>
-      <div class="photo-card"><img src="axona-11.jpg" alt="11"><p>Calibrating digital thermostat settings for precise cooling.</p></div>
-      <div class="photo-card"><img src="axona-12.jpg" alt="12"><p>Working alongside experienced international colleagues.</p></div>
-      <div class="photo-card"><img src="axona-13.jpg" alt="13"><p>Cleaning and servicing heavy filters for optimal air quality.</p></div>
-      <div class="photo-card"><img src="axona-14.jpg" alt="14"><p>Final site inspection approved successfully by management.</p></div>
-      <div class="photo-card"><img src="axona-15.jpg" alt="15"><p>Concluding my tenure at Axona with valuable technical mastery.</p></div>
+      <!-- Friend Photo 2 -->
+      <div class="photo-card">
+        <img src="friend-2.jpg" alt="Friend Photo 2" class="passport-img" onerror="this.closest('.photo-card').style.display='none'" onclick="openModal(this.src)">
+        <p class="photo-caption">Team Work</p>
+      </div>
+
+      <!-- Friend Photo 3 -->
+      <div class="photo-card">
+        <img src="friend-3.jpg" alt="Friend Photo 3" class="passport-img" onerror="this.closest('.photo-card').style.display='none'" onclick="openModal(this.src)">
+        <p class="photo-caption">Happy Moments</p>
+      </div>
+
     </div>
   </div>
-</body>
-        </html>
+</section>
+
+<!-- Image Modal Popup Structure (Zoom Effect) -->
+<div id="imageModal" class="modal" onclick="closeModal()">
+  <span class="close">&times;</span>
+  <img class="modal-content" id="modalImg">
+</div>
+
+<!-- ================= STYLE & SCRIPT SECTION ================= -->
+<style>
+  /* Friends Section Background with #f5f9fd */
+  .friends-section {
+    background-color: #f5f9fd;
+    color: #004080;
+    padding: 30px;
+    border-radius: 8px;
+    max-width: 800px;
+    margin: 20px auto;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+  }
+
+  .friends-section h2 {
+    color: #004080 !important;
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 24px;
+    border-bottom: 2px solid #004080;
+    padding-bottom: 10px;
+  }
+
+  .friends-card {
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 6px;
+    border: 1px solid #d0e1f9;
+  }
+
+  .friends-desc {
+    color: #333333 !important;
+    font-size: 16px;
+    line-height: 1.6;
+    text-align: center;
+    margin-bottom: 20px;
+  }
+
+  /* Photos Container Style */
+  .friends-photos-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 15px;
+  }
+
+  .photo-card {
+    text-align: center;
+  }
+  
+  /* Passport Size Photo Styling with BLACK Border Box */
+  .passport-img {
+    width: 60px;
+    height: 75px;
+    object-fit: cover;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    border: 2px solid #000000;
+    display: block;
+    margin: 0 auto;
+    background-color: #000;
+  }
+  
+  .passport-img:hover {
+    transform: scale(1.08);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+  }
+
+  /* Small Text / Caption Under Photo */
+  .photo-caption {
+    font-size: 11px;
+    color: #555555 !important;
+    margin-top: 5px;
+    max-width: 70px;
+    word-wrap: break-word;
+  }
+
+  /* Modal Popup Styling for Zoom Effect */
+  .modal {
+    display: none; 
+    position: fixed; 
+    z-index: 1000; 
+    padding-top: 100px; 
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.9);
+  }
+
+  .modal-content {
+    margin: auto;
+    display: block;
+    width: 80%;
+    max-width: 400px;
+    height: auto;
+    border-radius: 8px;
+  }
+
+  .close {
+    position: absolute;
+    top: 30px;
+    right: 35px;
+    color: #f1f1f1;
+    font-size: 40px;
+    font-weight: bold;
+    cursor: pointer;
+  }
+</style>
+
+<script>
+  function openModal(src) {
+    var modal = document.getElementById("imageModal");
+    var modalImg = document.getElementById("modalImg");
+    modal.style.display = "block";
+    modalImg.src = src;
+  }
+
+  function closeModal() {
+    var modal = document.getElementById("imageModal");
+    modal.style.display = "none";
+  }
+</script>
