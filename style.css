@@ -1,0 +1,61 @@
+/* Smooth Scroll */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Love Story Card Styling */
+.love-story-card {
+    background: linear-gradient(135deg, #0d1b2a, #3a0ca3);
+    border-radius: 12px;
+    padding: 24px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+    margin: 30px 0;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.love-story-card h2 {
+    font-size: 1.6rem;
+    margin-bottom: 12px;
+    color: #ffccd5;
+}
+
+.love-story-card p {
+    font-size: 1rem;
+    line-height: 1.6;
+    color: #e0e0e0;
+    margin-bottom: 20px;
+}
+
+/* Button Styling */
+.love-btn {
+    display: inline-block;
+    background-color: #800020;
+    color: #ffffff;
+    padding: 10px 20px;
+    border-radius: 25px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.95rem;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    box-shadow: 0 3px 8px rgba(128, 0, 32, 0.5);
+}
+
+.love-btn:hover {
+    background-color: #a00028;
+    transform: scale(1.03);
+}
+
+/* Love Story Content Section */
+.love-story-content-section {
+    background: #1c2541;
+    padding: 30px;
+    border-radius: 12px;
+    margin-top: 30px;
+    margin-bottom: 40px;
+    border-left: 5px solid #800020;
+}
+
+.love-story-content-section h2 {
+    color: #ffccd5;
+    margin-top: 0;
+}
