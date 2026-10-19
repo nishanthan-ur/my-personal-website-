@@ -1,0 +1,124 @@
+
+/* ===== LOVE STORY SECTION ===== */
+.love-card {
+  text-align: center;
+  padding: 30px 20px;
+  margin: 25px 0;
+  background: linear-gradient(135deg, #fff0f5, #ffe4ec);
+  border: 1px solid #ffc1d5;
+  border-radius: 18px;
+  box-shadow: 0 5px 18px rgba(233, 30, 99, 0.12);
+}
+
+.love-card h2 {
+  color: #e91e63;
+  font-size: 30px;
+  margin-bottom: 22px;
+}
+
+/* ===== VISIT LOVE STORY BUTTON ===== */
+.love-btn {
+  display: inline-block;
+  padding: 14px 25px;
+  background: linear-gradient(135deg, #e91e63, #ad1457);
+  color: #ffffff;
+  text-decoration: none;
+  font-size: 16px;
+  font-weight: bold;
+  border-radius: 30px;
+  box-shadow: 0 5px 12px rgba(233, 30, 99, 0.25);
+  transition: all 0.3s ease;
+}
+
+.love-btn:hover {
+  background: #880e4f;
+  transform: translateY(-3px);
+}
+
+/* ===== PHOTO UPLOAD AREA ===== */
+.upload-box {
+  padding: 20px;
+  margin: 20px 0;
+  background: #ffffff;
+  border: 2px dashed #e91e63;
+  border-radius: 14px;
+}
+
+.upload-box label {
+  display: block;
+  color: #c2185b;
+  font-weight: bold;
+  margin-bottom: 12px;
+}
+
+/* ===== PHOTO AND VIDEO GALLERY ===== */
+.media-gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 18px;
+  margin-top: 22px;
+}
+
+.media-card {
+  padding: 12px;
+  background: #ffffff;
+  border-radius: 14px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  overflow-wrap: anywhere;
+}
+
+.media-card img,
+.media-card video {
+  width: 100%;
+  max-height: 320px;
+  object-fit: contain;
+  border-radius: 10px;
+}
+
+/* ===== LIKE AND COMMENT BUTTONS ===== */
+.media-card button {
+  padding: 10px 16px;
+  margin: 8px 4px;
+  border: none;
+  border-radius: 22px;
+  background: #e91e63;
+  color: #ffffff;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.media-card button:hover {
+  background: #ad1457;
+}
+
+/* ===== COMMENT INPUT ===== */
+.media-card input {
+  width: 95%;
+  padding: 11px;
+  margin: 10px 0;
+  border: 1px solid #f0a5bd;
+  border-radius: 9px;
+  box-sizing: border-box;
+  outline-color: #e91e63;
+}
+
+/* ===== MOBILE DISPLAY ===== */
+@media (max-width: 600px) {
+  .love-card {
+    padding: 22px 12px;
+  }
+
+  .love-card h2 {
+    font-size: 25px;
+  }
+
+  .love-btn {
+    padding: 12px 17px;
+    font-size: 14px;
+  }
+
+  .media-gallery {
+    grid-template-columns: 1fr;
+  }
+}
