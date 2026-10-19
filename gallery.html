@@ -1,0 +1,381 @@
+
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nishanthan Suseekaran | My Gallery</title>
+
+<style>
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #071426;
+  color: white;
+}
+
+header {
+  text-align: center;
+  padding: 28px 15px;
+  background: linear-gradient(135deg, #102d50, #641e40);
+}
+
+header h1 {
+  margin-bottom: 10px;
+}
+
+main {
+  max-width: 1100px;
+  margin: auto;
+  padding: 20px;
+}
+
+.panel {
+  background: #10243c;
+  padding: 20px;
+  border-radius: 14px;
+  margin-bottom: 22px;
+}
+
+input, textarea, button {
+  font: inherit;
+  padding: 12px;
+  border-radius: 8px;
+  border: 1px solid #47617e;
+}
+
+input, textarea {
+  width: 100%;
+  margin: 8px 0;
+  background: #f8fafc;
+  color: #111827;
+}
+
+button, .back {
+  background: #d94686;
+  color: white;
+  border: 0;
+  cursor: pointer;
+  padding: 12px 17px;
+  border-radius: 8px;
+  text-decoration: none;
+  display: inline-block;
+  margin: 5px 3px;
+}
+
+button:hover, .back:hover {
+  background: #a92562;
+}
+
+#gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(145px, 1fr));
+  gap: 15px;
+}
+
+.photo-card {
+  background: #10243c;
+  padding: 10px;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.photo-card img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.photo-card h3 {
+  font-size: 16px;
+  overflow-wrap: anywhere;
+}
+
+.photo-card p {
+  overflow-wrap: anywhere;
+  color: #d6e2f0;
+}
+
+.delete {
+  background: #b91c1c;
+}
+
+#status {
+  white-space: pre-wrap;
+  color: #fcd34d;
+}
+
+#viewer {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,.92);
+  z-index: 10;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  padding: 20px;
+}
+
+#viewer img {
+  max-width: 95%;
+  max-height: 78vh;
+  object-fit: contain;
+}
+
+footer {
+  text-align: center;
+  padding: 25px;
+  color: #cbd5e1;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <h1>📸 My Personal Gallery</h1>
+  <p>Nishanthan Suseekaran</p>
+  <p>My Life • My Family • My Education • My Memories</p>
+  <a class="back" href="index.html">← Back to Home</a>
+</header>
+
+<main>
+
+  <section class="panel">
+    <h2>➕ Upload My Photos</h2>
+    <p>Select one or more photos from your phone.</p>
+
+    <label for="photos">Choose photos</label>
+    <input id="photos" type="file" accept="image/*" multiple>
+
+    <label for="photoTitle">Photo title</label>
+    <input id="photoTitle" type="text"
+           placeholder="Enter photo title">
+
+    <label for="photoDescription">Photo description</label>
+    <textarea id="photoDescription"
+              placeholder="Write your memories here"></textarea>
+
+    <button id="uploadButton" type="button">
+      📤 Add Selected Photos
+    </button>
+
+    <p id="status" role="status">
+      Select photos to get started.
+    </p>
+  </section>
+
+  <section>
+    <h2>🖼️ My Photos</h2>
+    <p id="count">0 photos</p>
+    <div id="gallery"></div>
+  </section>
+
+</main>
+
+<div id="viewer" role="dialog" aria-modal="true"
+     aria-label="Photo viewer">
+  <button id="closeViewer" type="button">✕ Close</button>
+  <img id="largePhoto" alt="Selected gallery photo">
+  <p id="largeTitle"></p>
+</div>
+
+<footer>
+  © 2026 Nishanthan Suseekaran
+  <p>My Life • My Memories • My Dream of Becoming a Pilot</p>
+</footer>
+
+<script>
+const photoInput = document.getElementById("photos");
+const titleInput = document.getElementById("photoTitle");
+const descriptionInput =
+  document.getElementById("photoDescription");
+const gallery = document.getElementById("gallery");
+const statusText = document.getElementById("status");
+const countText = document.getElementById("count");
+
+const STORAGE_KEY = "nishanthan_personal_gallery_v1";
+let photos = [];
+
+function setStatus(message) {
+  statusText.textContent = message;
+}
+
+function loadPhotos() {
+  try {
+    photos = JSON.parse(localStorage.getItem(STORAGE_KEY) || "[]");
+    if (!Array.isArray(photos)) photos = [];
+  } catch (error) {
+    photos = [];
+    setStatus("Saved gallery could not be read.");
+  }
+  renderGallery();
+}
+
+function savePhotos() {
+  try {
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(photos));
+    return true;
+  } catch (error) {
+    setStatus(
+      "Storage is full. Reduce photo sizes or connect online storage."
+    );
+    return false;
+  }
+}
+
+function renderGallery() {
+  gallery.replaceChildren();
+  countText.textContent =
+    photos.length + (photos.length === 1 ? " photo" : " photos");
+
+  photos.forEach((photo) => {
+    const card = document.createElement("article");
+    card.className = "photo-card";
+
+    const img = document.createElement("img");
+    img.src = photo.data;
+    img.alt = photo.title || "My photo";
+    img.loading = "lazy";
+
+    img.addEventListener("click", () => {
+      document.getElementById("largePhoto").src = photo.data;
+      document.getElementById("largeTitle").textContent =
+        photo.title || "My Photo";
+      document.getElementById("viewer").style.display = "flex";
+    });
+
+    const heading = document.createElement("h3");
+    heading.textContent = photo.title || "My Photo";
+
+    const description = document.createElement("p");
+    description.textContent = photo.description || "";
+
+    const removeButton = document.createElement("button");
+    removeButton.className = "delete";
+    removeButton.textContent = "🗑️ Delete";
+
+    removeButton.addEventListener("click", () => {
+      if (!confirm("Delete this photo?")) return;
+
+      const oldPhotos = photos;
+      photos = photos.filter((item) => item.id !== photo.id);
+
+      if (!savePhotos()) {
+        photos = oldPhotos;
+        return;
+      }
+
+      renderGallery();
+      setStatus("Photo deleted from this browser's gallery.");
+    });
+
+    card.append(img, heading, description, removeButton);
+    gallery.append(card);
+  });
+}
+
+function resizeImage(file) {
+  return new Promise((resolve, reject) => {
+    const reader = new FileReader();
+
+    reader.onerror = () => reject(new Error("Could not read photo."));
+    reader.onload = () => {
+      const image = new Image();
+
+      image.onerror = () => reject(new Error("Invalid image."));
+      image.onload = () => {
+        const maxSide = 1200;
+        const scale = Math.min(
+          1,
+          maxSide / Math.max(image.width, image.height)
+        );
+
+        const canvas = document.createElement("canvas");
+        canvas.width = Math.round(image.width * scale);
+        canvas.height = Math.round(image.height * scale);
+
+        const context = canvas.getContext("2d");
+        context.drawImage(image, 0, 0, canvas.width, canvas.height);
+
+        resolve(canvas.toDataURL("image/jpeg", 0.78));
+      };
+
+      image.src = reader.result;
+    };
+
+    reader.readAsDataURL(file);
+  });
+}
+
+document.getElementById("uploadButton")
+  .addEventListener("click", async () => {
+    const files = Array.from(photoInput.files || [])
+      .filter((file) => file.type.startsWith("image/"));
+
+    if (!files.length) {
+      setStatus("Please select at least one photo.");
+      return;
+    }
+
+    const button = document.getElementById("uploadButton");
+    button.disabled = true;
+
+    try {
+      for (const file of files) {
+        setStatus("Processing: " + file.name);
+
+        const data = await resizeImage(file);
+        const photo = {
+          id: Date.now().toString() + Math.random().toString(16).slice(2),
+          title: titleInput.value.trim() || file.name,
+          description: descriptionInput.value.trim(),
+          data
+        };
+
+        photos.push(photo);
+
+        if (!savePhotos()) {
+          photos.pop();
+          throw new Error("Browser storage limit reached.");
+        }
+      }
+
+      renderGallery();
+      photoInput.value = "";
+      titleInput.value = "";
+      descriptionInput.value = "";
+
+      setStatus(
+        "Photos added to this browser. Online permanent storage is not connected yet."
+      );
+    } catch (error) {
+      setStatus(error.message || "Could not add photos.");
+    } finally {
+      button.disabled = false;
+    }
+  });
+
+document.getElementById("closeViewer")
+  .addEventListener("click", () => {
+    document.getElementById("viewer").style.display = "none";
+  });
+
+document.getElementById("viewer")
+  .addEventListener("click", (event) => {
+    if (event.target.id === "viewer") {
+      event.currentTarget.style.display = "none";
+    }
+  });
+
+loadPhotos();
+</script>
+
+</body>
+  </html>
