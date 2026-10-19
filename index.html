@@ -397,14 +397,76 @@ footer{text-align:center;background:#051329;color:white;padding:30px 15px;margin
   </div>
      </section>
   
- <div class="card">
-<!-- My Love Story Section -->
-<section id="lovestory">
-  <h2>My Love Story ❤️</h2>
-  <p>This section is dedicated to my special love story and beautiful memories.</p> 
-  </div>
-</div>
+ <style>
+  .card {
+    background: linear-gradient(135deg, #0a192f, #2c0b0e);
+    color: #ffffff;
+    border-radius: 12px;
+    padding: 24px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    margin: 20px 0;
+    font-family: Arial, sans-serif;
+    text-align: center;
+  }
+  
+  .card h2 {
+    color: #ff6b81;
+    margin-bottom: 12px;
+  }
+  
+  .card p {
+    color: #cbd5e1;
+    line-height: 1.6;
+  }
+
+  /* விசிட் பட்டன் ஸ்டைல் */
+  .love-btn {
+    display: inline-block;
+    margin-top: 15px;
+    padding: 10px 20px;
+    background-color: #ff6b81;
+    color: white;
+    text-decoration: none;
+    border-radius: 25px;
+    font-weight: bold;
+    transition: 0.3s;
+  }
+
+  .love-btn:hover {
+    background-color: #ff4757;
+    transform: scale(1.05);
+  }
+
+  /* கவிதை பெட்டி ஸ்டைல் */
+  .love-poem {
+    margin-top: 20px;
+    padding: 15px;
+    background: rgba(255, 255, 255, 0.05);
+    border-left: 4px solid #ff6b81;
+    border-radius: 0 8px 8px 0;
+    text-align: left;
+    font-style: italic;
+    color: #f1f5f9;
+  }
 </style>
+
+<div class="card">
+  <!-- My Love Story Section -->
+  <section id="lovestory">
+    <h2>My Love Story ❤️</h2>
+    <p>This section is dedicated to my special love story and beautiful memories.</p> 
+    
+    <!-- விசிட் பட்டன் -->
+    <a href="#lovestory" class="love-btn">Visit My Love Story</a>
+
+    <!-- சின்ன கவிதை (Romantic Poem) -->
+    <div class="love-poem">
+      "கண்ணாடி போன்ற என் இதயம் உன்னை பார்த்த நொடியில் உடைந்தது...<br>
+      ஆனால், அந்த சிதறிய சில்லுகள் ஒவ்வொன்றிலும் உன் முகமே தெரிகிறது!<br>
+      காலம் கடந்தாலும் நம் காதல் என்றும் மங்காது..." ✨
+    </div>
+  </section>
+  </div>
   
      <!-- My Personal Gallery -->
 <section id="gallery">
