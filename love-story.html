@@ -1,124 +1,268 @@
+ <!-- HTML Section -->
+<div class="love-poetry-section">
+    <div class="search-box-container">
+        <form action="https://www.google.com/search" method="get" target="_blank" class="google-search-form">
+            <input type="text" name="q" placeholder="Search Google..." required>
+            <button type="submit"><i class="fas fa-search"></i> Search</button>
+        </form>
+    </div>
 
-/* ===== LOVE STORY SECTION ===== */
-.love-card {
-  text-align: center;
-  padding: 30px 20px;
-  margin: 25px 0;
-  background: linear-gradient(135deg, #fff0f5, #ffe4ec);
-  border: 1px solid #ffc1d5;
-  border-radius: 18px;
-  box-shadow: 0 5px 18px rgba(233, 30, 99, 0.12);
+    <div class="poetry-card">
+        <h2>Love Poetry ❤️</h2>
+        
+        <div class="photo-upload-container">
+            <label for="photo-input" class="upload-label">
+                <i class="fas fa-camera"></i> Upload Photo
+            </label>
+            <input type="file" id="photo-input" accept="image/*" onchange="previewImage(event)">
+            <div id="image-preview" class="image-preview"></div>
+        </div>
+
+        <div class="poetry-text-box">
+            <textarea placeholder="Write your poetry here..." rows="4"></textarea>
+        </div>
+
+        <div class="interaction-section">
+            <button id="like-btn" onclick="toggleLike()">
+                ❤️ <span id="like-count">0</span> Likes
+            </button>
+        </div>
+
+        <div class="comments-section">
+            <h3>Comments</h3>
+            <div class="comment-input-box">
+                <input type="text" id="comment-input" placeholder="Write a comment...">
+                <button onclick="addComment()">Post</button>
+            </div>
+            <div id="comments-list" class="comments-list"></div>
+        </div>
+    </div>
+</div>
+
+<!-- CSS Section -->
+<style>
+.love-poetry-section {
+    background: linear-gradient(135deg, #0b132b, #3a0ca3);
+    padding: 30px 20px;
+    border-radius: 15px;
+    color: #ffffff;
+    max-width: 600px;
+    margin: 20px auto;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-.love-card h2 {
-  color: #e91e63;
-  font-size: 30px;
-  margin-bottom: 22px;
+.search-box-container {
+    margin-bottom: 25px;
 }
 
-/* ===== VISIT LOVE STORY BUTTON ===== */
-.love-btn {
-  display: inline-block;
-  padding: 14px 25px;
-  background: linear-gradient(135deg, #e91e63, #ad1457);
-  color: #ffffff;
-  text-decoration: none;
-  font-size: 16px;
-  font-weight: bold;
-  border-radius: 30px;
-  box-shadow: 0 5px 12px rgba(233, 30, 99, 0.25);
-  transition: all 0.3s ease;
+.google-search-form {
+    display: flex;
+    gap: 10px;
+    background: rgba(255, 255, 255, 0.1);
+    padding: 8px;
+    border-radius: 30px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
-.love-btn:hover {
-  background: #880e4f;
-  transform: translateY(-3px);
+.google-search-form input {
+    flex: 1;
+    background: transparent;
+    border: none;
+    outline: none;
+    color: #fff;
+    padding-left: 15px;
+    font-size: 16px;
 }
 
-/* ===== PHOTO UPLOAD AREA ===== */
-.upload-box {
-  padding: 20px;
-  margin: 20px 0;
-  background: #ffffff;
-  border: 2px dashed #e91e63;
-  border-radius: 14px;
+.google-search-form input::placeholder {
+    color: #b0c4de;
 }
 
-.upload-box label {
-  display: block;
-  color: #c2185b;
-  font-weight: bold;
-  margin-bottom: 12px;
+.google-search-form button {
+    background: #7209b7;
+    color: white;
+    border: none;
+    padding: 8px 20px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background 0.3s ease;
 }
 
-/* ===== PHOTO AND VIDEO GALLERY ===== */
-.media-gallery {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 18px;
-  margin-top: 22px;
+.google-search-form button:hover {
+    background: #560bad;
 }
 
-.media-card {
-  padding: 12px;
-  background: #ffffff;
-  border-radius: 14px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  overflow-wrap: anywhere;
+.poetry-card {
+    background: rgba(40, 10, 30, 0.7);
+    border: 1px solid #7209b7;
+    padding: 20px;
+    border-radius: 12px;
 }
 
-.media-card img,
-.media-card video {
-  width: 100%;
-  max-height: 320px;
-  object-fit: contain;
-  border-radius: 10px;
+.poetry-card h2 {
+    text-align: center;
+    color: #ff4d6d;
+    margin-bottom: 20px;
 }
 
-/* ===== LIKE AND COMMENT BUTTONS ===== */
-.media-card button {
-  padding: 10px 16px;
-  margin: 8px 4px;
-  border: none;
-  border-radius: 22px;
-  background: #e91e63;
-  color: #ffffff;
-  font-weight: bold;
-  cursor: pointer;
-  transition: 0.3s ease;
+.photo-upload-container {
+    text-align: center;
+    margin-bottom: 15px;
 }
 
-.media-card button:hover {
-  background: #ad1457;
-}
-
-/* ===== COMMENT INPUT ===== */
-.media-card input {
-  width: 95%;
-  padding: 11px;
-  margin: 10px 0;
-  border: 1px solid #f0a5bd;
-  border-radius: 9px;
-  box-sizing: border-box;
-  outline-color: #e91e63;
-}
-
-/* ===== MOBILE DISPLAY ===== */
-@media (max-width: 600px) {
-  .love-card {
-    padding: 22px 12px;
-  }
-
-  .love-card h2 {
-    font-size: 25px;
-  }
-
-  .love-btn {
-    padding: 12px 17px;
+.upload-label {
+    display: inline-block;
+    background: #b5179e;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 25px;
+    cursor: pointer;
     font-size: 14px;
-  }
-
-  .media-gallery {
-    grid-template-columns: 1fr;
-  }
+    transition: 0.3s;
 }
+
+.upload-label:hover {
+    background: #7209b7;
+}
+
+#photo-input {
+    display: none;
+}
+
+.image-preview img {
+    max-width: 100%;
+    max-height: 250px;
+    border-radius: 8px;
+    margin-top: 15px;
+    border: 2px solid #ff4d6d;
+}
+
+.poetry-text-box textarea {
+    width: 100%;
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 8px;
+    padding: 12px;
+    color: #fff;
+    font-size: 16px;
+    resize: vertical;
+    outline: none;
+    margin-bottom: 15px;
+    box-sizing: border-box;
+}
+
+.poetry-text-box textarea::placeholder {
+    color: #d8b4fe;
+}
+
+.interaction-section {
+    margin-bottom: 20px;
+}
+
+#like-btn {
+    background: transparent;
+    border: 2px solid #ff4d6d;
+    color: #ff4d6d;
+    padding: 8px 16px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: 0.3s;
+}
+
+#like-btn:hover {
+    background: #ff4d6d;
+    color: white;
+}
+
+.comments-section h3 {
+    font-size: 16px;
+    margin-bottom: 10px;
+    color: #f72585;
+}
+
+.comment-input-box {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
+.comment-input-box input {
+    flex: 1;
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    padding: 8px 12px;
+    border-radius: 6px;
+    color: #fff;
+    outline: none;
+}
+
+.comment-input-box button {
+    background: #4cc9f0;
+    color: #0b132b;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 6px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.comments-list {
+    max-height: 150px;
+    overflow-y: auto;
+    font-size: 14px;
+}
+
+.comment-item {
+    background: rgba(255, 255, 255, 0.05);
+    padding: 6px 10px;
+    border-radius: 4px;
+    margin-bottom: 5px;
+    border-left: 3px solid #4cc9f0;
+}
+</style>
+
+<!-- JavaScript Section -->
+<script>
+function previewImage(event) {
+    const reader = new FileReader();
+    reader.onload = function() {
+        const preview = document.getElementById('image-preview');
+        preview.innerHTML = `<img src="${reader.result}" alt="Uploaded Photo">`;
+    }
+    reader.readAsDataURL(event.target.files[0]);
+}
+
+let isLiked = false;
+function toggleLike() {
+    let likeCount = document.getElementById('like-count');
+    let count = parseInt(likeCount.innerText);
+    if (!isLiked) {
+        count++;
+        isLiked = true;
+        document.getElementById('like-btn').style.background = '#ff4d6d';
+        document.getElementById('like-btn').style.color = 'white';
+    } else {
+        count--;
+        isLiked = false;
+        document.getElementById('like-btn').style.background = 'transparent';
+        document.getElementById('like-btn').style.color = '#ff4d6d';
+    }
+    likeCount.innerText = count;
+}
+
+function addComment() {
+    let input = document.getElementById('comment-input');
+    let commentText = input.value.trim();
+    if (commentText !== "") {
+        let list = document.getElementById('comments-list');
+        let newComment = document.createElement('div');
+        newComment.className = 'comment-item';
+        newComment.innerText = commentText;
+        list.prepend(newComment);
+        input.value = "";
+    }
+}
+</script>
