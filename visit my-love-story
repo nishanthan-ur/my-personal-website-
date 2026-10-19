@@ -1,9 +1,9 @@
-/* ==========================================
-   MY LOVE STORY SECTION - FULL CSS STYLING
+ /* ==========================================
+   MY LOVE STORY SECTION - PERFECT CSS STYLING
    ========================================== */
 
-/* 1. மெயின் "My Love Story" கண்டெய்னர் (பேக்ரவுண்ட் இமேஜ் மற்றும் ஷேடோவுடன்) */
-.my-love-story {
+/* 1. மெயின் லவ் ஸ்டோரி செக்ஷன் கண்டெய்னர் */
+#lovestory {
     background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('watermarked_img_11493212795287328625.jpg');
     background-size: cover;
     background-position: center;
@@ -16,17 +16,34 @@
     margin: 30px 0;
 }
 
-/* 2. கவிதை பகுதி (Poem Box Style - கவிதையுடன் சேர்த்து CSS-லேயே அமைப்பு) */
-.my-love-story .love-poem-box {
-    margin-bottom: 30px;
+/* 2. தலைப்பு மற்றும் விளக்க உரை */
+#lovestory h2 {
+    color: #ffffff;
+    font-size: 28px;
+    font-weight: 700;
+    margin-bottom: 15px;
+    text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.8);
+}
+
+#lovestory > p {
+    color: #ffccd5;
+    font-size: 16px;
+    margin-bottom: 25px;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8);
+}
+
+/* 3. கவிதை பகுதி ஸ்டைல் */
+#lovestory .love-poem-box {
+    margin: 25px auto;
     padding: 25px;
     background: rgba(0, 0, 0, 0.4);
     border-radius: 15px;
     backdrop-filter: blur(5px);
     border: 1px solid rgba(255, 255, 255, 0.2);
+    max-width: 700px;
 }
 
-.my-love-story .love-poem-box::before {
+#lovestory .love-poem-box::before {
     content: "விழியோட பார்வையில் தொடங்கி...\A இதயத்தின் துடிப்பில் கலந்த உன் நினைவுகள்,\A என் வாழ்வின் அழகான காவியமாய்...\A காலம் கடந்தும் தொடர்கிறது நம் காதல்!";
     white-space: pre-wrap;
     font-size: 20px;
@@ -38,8 +55,8 @@
     display: block;
 }
 
-/* 3. 6 போட்டோக்களை வைக்க grid அமைப்பு (3 columns, 2 rows) */
-.my-love-story .photo-grid-box {
+/* 4. 6 போட்டோக்களை வைக்க grid அமைப்பு (3 columns) */
+#lovestory .photo-grid-box {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 15px;
@@ -47,7 +64,7 @@
     margin: 0 auto 30px auto;
 }
 
-.my-love-story .photo-placeholder {
+#lovestory .photo-placeholder {
     background: rgba(255, 255, 255, 0.15);
     border: 2px dashed rgba(255, 255, 255, 0.6);
     border-radius: 12px;
@@ -60,20 +77,40 @@
     backdrop-filter: blur(5px);
 }
 
-.my-love-story .photo-placeholder:hover {
+#lovestory .photo-placeholder:hover {
     transform: scale(1.05);
     background: rgba(255, 255, 255, 0.25);
 }
 
-.my-love-story .photo-placeholder img {
+#lovestory .photo-placeholder img {
     width: 100%;
     height: 100%;
     object-fit: cover;
     border-radius: 10px;
 }
 
-/* 4. போட்டோ அப்லோட் செக்ஷன் ஸ்டைல் */
-.my-love-story .upload-section {
+/* 5. விசிட் பட்டன் ஸ்டைல் */
+#lovestory .love-btn {
+    display: inline-block;
+    background: linear-gradient(135deg, #ff758c, #ff7eb3);
+    color: white;
+    padding: 12px 25px;
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: 600;
+    border-radius: 30px;
+    box-shadow: 0 5px 15px rgba(255, 117, 140, 0.4);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    margin-top: 15px;
+}
+
+#lovestory .love-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(255, 117, 140, 0.7);
+}
+
+/* 6. போட்டோ அப்லோட் செக்ஷன் ஸ்டைல் */
+#lovestory .upload-section {
     margin-top: 35px;
     padding: 20px;
     background: rgba(0, 0, 0, 0.4);
@@ -86,25 +123,25 @@
     margin-right: auto;
 }
 
-.my-love-story .upload-section h3 {
+#lovestory .upload-section h3 {
     color: #ffccd5;
     font-size: 18px;
     margin-bottom: 15px;
     font-weight: 600;
 }
 
-.my-love-story .upload-form {
+#lovestory .upload-form {
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 12px;
 }
 
-.my-love-story .upload-form input[type="file"] {
+#lovestory .upload-form input[type="file"] {
     display: none;
 }
 
-.my-love-story .upload-btn {
+#lovestory .upload-btn {
     background: rgba(255, 255, 255, 0.2);
     color: white;
     padding: 10px 20px;
@@ -115,11 +152,11 @@
     transition: background 0.3s ease;
 }
 
-.my-love-story .upload-btn:hover {
+#lovestory .upload-btn:hover {
     background: rgba(255, 255, 255, 0.35);
 }
 
-.my-love-story .submit-btn {
+#lovestory .submit-btn {
     background: linear-gradient(135deg, #ff758c, #ff7eb3);
     color: white;
     border: none;
@@ -132,17 +169,17 @@
     transition: transform 0.3s ease;
 }
 
-.my-love-story .submit-btn:hover {
+#lovestory .submit-btn:hover {
     transform: translateY(-2px);
 }
 
-/* 5. மொபைல் ஸ்கிரீனுக்கான ரெஸ்பான்சிவ் அமைப்பு */
+/* 7. மொபைல் ரெஸ்பான்சிவ் அமைப்பு */
 @media (max-width: 768px) {
-    .my-love-story .photo-grid-box {
+    #lovestory .photo-grid-box {
         grid-template-columns: repeat(2, 1fr);
     }
     
-    .my-love-story .love-poem-box::before {
+    #lovestory .love-poem-box::before {
         font-size: 16px;
     }
 }
