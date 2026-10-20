@@ -6,9 +6,7 @@
 <title>Nishanthan Suseekaran | My Gallery</title>
 
 <style>
-* {
-  box-sizing: border-box;
-}
+* { box-sizing: border-box; }
 
 body {
   margin: 0;
@@ -23,9 +21,7 @@ header {
   background: linear-gradient(135deg, #102d50, #641e40);
 }
 
-header h1 {
-  margin-bottom: 10px;
-}
+header h1 { margin-bottom: 10px; }
 
 main {
   max-width: 1100px;
@@ -33,7 +29,7 @@ main {
   padding: 20px;
 }
 
-.panel {
+.panel, .photo-card {
   background: #10243c;
   padding: 20px;
   border-radius: 14px;
@@ -66,8 +62,11 @@ button, .back {
   margin: 5px 3px;
 }
 
-button:hover, .back:hover {
-  background: #a92562;
+button:hover, .back:hover { background: #a92562; }
+
+button:disabled {
+  opacity: 0.6;
+  cursor: wait;
 }
 
 #gallery {
@@ -77,9 +76,8 @@ button:hover, .back:hover {
 }
 
 .photo-card {
-  background: #10243c;
   padding: 10px;
-  border-radius: 12px;
+  margin-bottom: 0;
   overflow: hidden;
 }
 
@@ -91,22 +89,16 @@ button:hover, .back:hover {
   cursor: pointer;
 }
 
-.photo-card h3 {
-  font-size: 16px;
+.photo-card h3, .photo-card p {
   overflow-wrap: anywhere;
 }
 
-.photo-card p {
-  overflow-wrap: anywhere;
-  color: #d6e2f0;
-}
-
-.delete {
-  background: #b91c1c;
-}
+.photo-card h3 { font-size: 16px; }
+.photo-card p { color: #d6e2f0; }
 
 #status {
   white-space: pre-wrap;
+  overflow-wrap: anywhere;
   color: #fcd34d;
 }
 
@@ -124,9 +116,9 @@ button:hover, .back:hover {
 
 #viewer img {
   max-width: 96%;
-  max-height: 128vh;
-  object-fit: cover;
-  border-radius: 6px
+  max-height: 78vh;
+  object-fit: contain;
+  border-radius: 6px;
 }
 
 footer {
@@ -134,15 +126,16 @@ footer {
   padding: 25px;
   color: #cbd5e1;
 }
+
 </style>
 </head>
 
 <body>
 
 <header>
-  <h1>📸.Gallery</h1>
+  <h1>📸 Gallery</h1>
   <p>Nishanthan Suseekaran</p>
-  <p> welcome </p>
+  <p>Welcome</p>
   <a class="back" href="index.html">← Back to Home</a>
 </header>
 
@@ -150,31 +143,36 @@ footer {
 
   <section class="panel">
     <h2>➕ Upload Photos</h2>
-    <p>Select one or more photos from your phone.</p>
+    <p>Select photos to share them in the online gallery.</p>
 
     <label for="photos">Choose photos</label>
     <input id="photos" type="file" accept="image/*" multiple>
 
     <label for="photoTitle">Photo title</label>
     <input id="photoTitle" type="text"
-           placeholder="Enter photo title">
+           placeholder="Enter photo title" maxlength="150">
 
     <label for="photoDescription">Photo description</label>
     <textarea id="photoDescription"
-              placeholder="Write your memories here"></textarea>
+              placeholder="Write your memories here"
+              maxlength="1000"></textarea>
 
     <button id="uploadButton" type="button">
       📤 Add Selected Photos
     </button>
 
+    <button id="refreshButton" type="button">
+      🔄 Refresh Gallery
+    </button>
+
     <p id="status" role="status">
-      Select photos to get started.
+      Connecting to online gallery...
     </p>
   </section>
 
   <section>
-    <h2>🖼️Photos</h2>
-    <p id="count">0 photos</p>
+    <h2>🖼️ Photos</h2>
+    <p id="count">Loading photos...</p>
     <div id="gallery"></div>
   </section>
 
@@ -192,64 +190,94 @@ footer {
   <p>nishanthan2001@gmail.com</p>
 </footer>
 
+<!-- Supabase JavaScript library -->
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
 <script>
+/*
+  IMPORTANT:
+  Replace the two values below with your own Supabase
+  Project URL and publishable/anon key.
+
+  Never put a service_role or secret key in this HTML.
+*/
+
+const SUPABASE_URL = "YOUR_SUPABASE_PROJECT_URL";
+const SUPABASE_KEY = "YOUR_SUPABASE_PUBLISHABLE_OR_ANON_KEY";
+const BUCKET = "gallery-photos";
+
+const gallery = document.getElementById("gallery");
 const photoInput = document.getElementById("photos");
 const titleInput = document.getElementById("photoTitle");
-const descriptionInput =
-  document.getElementById("photoDescription");
-const gallery = document.getElementById("gallery");
+const descriptionInput = document.getElementById("photoDescription");
 const statusText = document.getElementById("status");
 const countText = document.getElementById("count");
+const uploadButton = document.getElementById("uploadButton");
+const refreshButton = document.getElementById("refreshButton");
 
-const STORAGE_KEY = "nishanthan_personal_gallery_v1";
-let photos = [];
+let supabaseClient = null;
 
 function setStatus(message) {
   statusText.textContent = message;
 }
 
-function loadPhotos() {
-  try {
-    photos = JSON.parse(localStorage.getItem(STORAGE_KEY) || "[]");
-    if (!Array.isArray(photos)) photos = [];
-  } catch (error) {
-    photos = [];
-    setStatus("Saved gallery could not be read.");
-  }
-  renderGallery();
-}
-
-function savePhotos() {
-  try {
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(photos));
-    return true;
-  } catch (error) {
+function initializeSupabase() {
+  if (
+    SUPABASE_URL.startsWith("YOUR_") ||
+    SUPABASE_KEY.startsWith("YOUR_")
+  ) {
     setStatus(
-      "Storage is full. Reduce photo sizes or connect online storage."
+      "Setup needed: add your Supabase Project URL and publishable key."
     );
     return false;
   }
+
+  if (!window.supabase) {
+    setStatus("Supabase library did not load. Check your internet.");
+    return false;
+  }
+
+  supabaseClient = window.supabase.createClient(
+    SUPABASE_URL,
+    SUPABASE_KEY
+  );
+
+  return true;
 }
 
-function renderGallery() {
-  gallery.replaceChildren();
-  countText.textContent =
-    photos.length + (photos.length === 1 ? " photo" : " photos");
+function showViewer(url, title) {
+  document.getElementById("largePhoto").src = url;
+  document.getElementById("largeTitle").textContent = title;
+  document.getElementById("viewer").style.display = "flex";
+}
 
-  photos.forEach((photo) => {
+function closeViewer() {
+  document.getElementById("viewer").style.display = "none";
+  document.getElementById("largePhoto").src = "";
+}
+
+function renderGallery(rows) {
+  gallery.replaceChildren();
+
+  countText.textContent =
+    rows.length + (rows.length === 1 ? " photo" : " photos");
+
+  rows.forEach((photo) => {
     const card = document.createElement("article");
     card.className = "photo-card";
 
+    const imageResult = supabaseClient
+      .storage
+      .from(BUCKET)
+      .getPublicUrl(photo.file_path);
+
     const img = document.createElement("img");
-    img.src = photo.data;
-    img.alt = photo.title || "My photo";
+    img.src = imageResult.data.publicUrl;
+    img.alt = photo.title || "Gallery photo";
     img.loading = "lazy";
 
     img.addEventListener("click", () => {
-      document.getElementById("largePhoto").src = photo.data;
-      document.getElementById("largeTitle").textContent =
-        photo.title || "My Photo";
-      document.getElementById("viewer").style.display = "flex";
+      showViewer(img.src, photo.title || "My Photo");
     });
 
     const heading = document.createElement("h3");
@@ -258,125 +286,146 @@ function renderGallery() {
     const description = document.createElement("p");
     description.textContent = photo.description || "";
 
-    const removeButton = document.createElement("button");
-    removeButton.className = "delete";
-    removeButton.textContent = "🗑️ Delete";
-
-    removeButton.addEventListener("click", () => {
-      if (!confirm("Delete this photo?")) return;
-
-      const oldPhotos = photos;
-      photos = photos.filter((item) => item.id !== photo.id);
-
-      if (!savePhotos()) {
-        photos = oldPhotos;
-        return;
-      }
-
-      renderGallery();
-      setStatus("Photo deleted from this browser's gallery.");
-    });
-
-    card.append(img, heading, description, removeButton);
+    card.append(img, heading, description);
     gallery.append(card);
   });
 }
 
-function resizeImage(file) {
-  return new Promise((resolve, reject) => {
-    const reader = new FileReader();
+async function loadPhotos() {
+  if (!supabaseClient) return;
 
-    reader.onerror = () => reject(new Error("Could not read photo."));
-    reader.onload = () => {
-      const image = new Image();
+  setStatus("Loading shared online photos...");
+  refreshButton.disabled = true;
 
-      image.onerror = () => reject(new Error("Invalid image."));
-      image.onload = () => {
-        const maxSide = 1200;
-        const scale = Math.min(
-          1,
-          maxSide / Math.max(image.width, image.height)
-        );
+  try {
+    const { data, error } = await supabaseClient
+      .from("gallery_photos")
+      .select("id, title, description, file_path, created_at")
+      .order("created_at", { ascending: false })
+      .limit(500);
 
-        const canvas = document.createElement("canvas");
-        canvas.width = Math.round(image.width * scale);
-        canvas.height = Math.round(image.height * scale);
+    if (error) throw error;
 
-        const context = canvas.getContext("2d");
-        context.drawImage(image, 0, 0, canvas.width, canvas.height);
-
-        resolve(canvas.toDataURL("image/jpeg", 0.78));
-      };
-
-      image.src = reader.result;
-    };
-
-    reader.readAsDataURL(file);
-  });
+    renderGallery(data || []);
+    setStatus("Online gallery loaded successfully.");
+  } catch (error) {
+    setStatus(
+      "Could not load photos: " + error.message +
+      "\nCheck your table, bucket and Supabase policies."
+    );
+    countText.textContent = "Unable to load photos";
+  } finally {
+    refreshButton.disabled = false;
+  }
 }
 
-document.getElementById("uploadButton")
-  .addEventListener("click", async () => {
-    const files = Array.from(photoInput.files || [])
-      .filter((file) => file.type.startsWith("image/"));
+async function uploadPhotos() {
+  if (!supabaseClient) {
+    setStatus("Please complete Supabase setup first.");
+    return;
+  }
 
-    if (!files.length) {
-      setStatus("Please select at least one photo.");
-      return;
-    }
+  const files = Array.from(photoInput.files || [])
+    .filter(file => file.type.startsWith("image/"));
 
-    const button = document.getElementById("uploadButton");
-    button.disabled = true;
+  if (!files.length) {
+    setStatus("Please select at least one photo.");
+    return;
+  }
 
-    try {
-      for (const file of files) {
-        setStatus("Processing: " + file.name);
+  // Limit each upload to 5 MB.
+  const tooLarge = files.find(file => file.size > 5 * 1024 * 1024);
 
-        const data = await resizeImage(file);
-        const photo = {
-          id: Date.now().toString() + Math.random().toString(16).slice(2),
-          title: titleInput.value.trim() || file.name,
-          description: descriptionInput.value.trim(),
-          data
-        };
+  if (tooLarge) {
+    setStatus("Each photo must be 5 MB or smaller.");
+    return;
+  }
 
-        photos.push(photo);
+  uploadButton.disabled = true;
+  refreshButton.disabled = true;
 
-        if (!savePhotos()) {
-          photos.pop();
-          throw new Error("Browser storage limit reached.");
-        }
+  let uploaded = 0;
+  const failures = [];
+
+  try {
+    for (const file of files) {
+      setStatus("Uploading: " + file.name);
+
+      const uniqueName =
+        Date.now() + "-" +
+        Math.random().toString(36).slice(2) + "-" +
+        file.name.replace(/[^a-zA-Z0-9._-]/g, "_");
+
+      const { data: fileData, error: uploadError } =
+        await supabaseClient
+          .storage
+          .from(BUCKET)
+          .upload(uniqueName, file, {
+            contentType: file.type,
+            upsert: false
+          });
+
+      if (uploadError) {
+        failures.push(file.name + ": " + uploadError.message);
+        continue;
       }
 
-      renderGallery();
-      photoInput.value = "";
-      titleInput.value = "";
-      descriptionInput.value = "";
+      const { error: databaseError } = await supabaseClient
+        .from("gallery_photos")
+        .insert({
+          title: titleInput.value.trim() || file.name,
+          description: descriptionInput.value.trim(),
+          file_path: fileData.path
+        });
 
-      setStatus(
-        "Photos added to this browser. Online permanent storage is not connected yet."
-      );
-    } catch (error) {
-      setStatus(error.message || "Could not add photos.");
-    } finally {
-      button.disabled = false;
+      if (databaseError) {
+        failures.push(file.name + ": " + databaseError.message);
+        continue;
+      }
+
+      uploaded++;
     }
-  });
+
+    photoInput.value = "";
+    titleInput.value = "";
+    descriptionInput.value = "";
+
+    await loadPhotos();
+
+    if (failures.length) {
+      setStatus(
+        uploaded + " photo(s) uploaded.\nSome uploads failed:\n" +
+        failures.join("\n")
+      );
+    } else {
+      setStatus(
+        uploaded + " photo(s) uploaded to the shared online gallery."
+      );
+    }
+
+  } catch (error) {
+    setStatus("Upload error: " + error.message);
+  } finally {
+    uploadButton.disabled = false;
+    refreshButton.disabled = false;
+  }
+}
+
+uploadButton.addEventListener("click", uploadPhotos);
+refreshButton.addEventListener("click", loadPhotos);
 
 document.getElementById("closeViewer")
-  .addEventListener("click", () => {
-    document.getElementById("viewer").style.display = "none";
-  });
+  .addEventListener("click", closeViewer);
 
 document.getElementById("viewer")
   .addEventListener("click", (event) => {
-    if (event.target.id === "viewer") {
-      event.currentTarget.style.display = "none";
-    }
+    if (event.target.id === "viewer") closeViewer();
   });
 
-loadPhotos();
+if (initializeSupabase()) {
+  loadPhotos();
+}
 </script>
 
 </body>
-  </html>
+</html>
